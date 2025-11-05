@@ -145,11 +145,54 @@ df = load_data()
 
 
 # --- Header Section ---
-st.markdown("<h1>🌎EO Missions -🛡️ Security & Compliance Demo Dashboard</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='title'>🌍 ESA EO Missions - 🛡️ Security & Compliance Dashboard</h1>", unsafe_allow_html=True)
+
+# Add ESA and GTT branding bar with logos
+try:
+    col_logo1, col_text, col_logo2 = st.columns([1, 6, 1])
+    
+    with col_logo1:
+        # Try to load ESA logo
+        try:
+            st.image("esa_logo.png", width=80)
+        except:
+            st.markdown("🛰️")
+    
+    with col_text:
+        st.markdown("""
+        <div style="background: linear-gradient(90deg, #003f88 0%, #0066cc 100%); padding: 15px; border-radius: 5px; text-align: center;">
+            <span style="color: white; font-size: 1.1rem; font-weight: 500;">
+                European Space Agency (ESA) | Powered by GTT Communications
+            </span>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col_logo2:
+        # Try to load GTT logo
+        try:
+            st.image("gtt_logo.png", width=80)
+        except:
+            st.markdown("🔷")
+            
+except Exception as e:
+    # Fallback if logos can't be loaded
+    st.markdown("""
+    <div style="background: linear-gradient(90deg, #003f88 0%, #0066cc 100%); padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+        <span style="color: white; font-size: 1.1rem; font-weight: 500;">
+            🛰️ European Space Agency (ESA) | Powered by GTT Communications 🔷
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
+
 st.markdown("""
 <div class='info-box'>
-    <p>This dashboard provides a high-level overview of security and compliance status across all missions (FLEX, BIOMASS, EARTHCARE).
-    Use the filters in the sidebar to select missions, report types, and date ranges for a detailed analysis.</p>
+    <p><strong>Demo Dashboard for ESA Earth Observation Missions</strong></p>
+    <p>This interactive dashboard provides real-time security and compliance monitoring across ESA's Earth Observation missions: 
+    <strong>FLEX</strong>, <strong>BIOMASS</strong>, and <strong>EARTHCARE</strong>.</p>
+    <p>Use the filters in the sidebar to select missions, report types, and date ranges for detailed analysis.</p>
+    <p style="margin-top: 10px; font-size: 0.9rem; color: #7f8c8d;">
+        <em>Demonstration system developed by GTT Communications for ESA mission security operations.</em>
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
