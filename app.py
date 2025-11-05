@@ -145,16 +145,16 @@ df = load_data()
 
 
 # --- Header Section ---
-st.markdown("<h1 class='title'>🌍 ESA EO Missions - 🛡️ Security & Compliance Dashboard</h1>", unsafe_allow_html=True)
+
 
 # Add ESA and GTT branding bar with logos
 try:
-    col_logo1, col_text, col_logo2 = st.columns([1, 6, 1])
+    col_logo1, col_text, col_logo2 = st.columns([1, 10, 1])
     
     with col_logo1:
         # Try to load ESA logo
         try:
-            st.image("esa_logo.png", width=80)
+            st.image("esa_logo.png", width=40)
         except:
             st.markdown("🛰️")
     
@@ -183,7 +183,7 @@ except Exception as e:
         </span>
     </div>
     """, unsafe_allow_html=True)
-
+st.markdown("<h1 class='title'>🌍 ESA EO Missions - 🛡️ Security & Compliance Dashboard</h1>", unsafe_allow_html=True)
 st.markdown("""
 <div class='info-box'>
     <p><strong>Demo Dashboard for ESA Earth Observation Missions</strong></p>
