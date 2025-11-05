@@ -5,7 +5,7 @@ from io import StringIO
 
 # --- Page Configuration ---
 st.set_page_config(
-    page_title="Mission Security Dashboard",
+    page_title="EO Mission Security Demo Dashboard",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="expanded"
