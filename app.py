@@ -5,6 +5,10 @@ from io import StringIO
 import random
 import time
 
+# Initialize chat history for the sidebar chatbot
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
 def response_generator():
     response = random.choice(
         [
@@ -265,7 +269,10 @@ with st.sidebar:
         </ul>
     </div>
     """, unsafe_allow_html=True)
+    st.markdown("---") # Visual separator
 
+    # 2. Chatbot Interface (placed second in sidebar)
+    st.subheader("Simple Chat Demo")
     # Use a container to display chat history cleanly in the sidebar
     chat_container = st.container(height=300, border=True)
 
