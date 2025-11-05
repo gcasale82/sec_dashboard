@@ -149,7 +149,7 @@ df = load_data()
 
 # Add ESA and GTT branding bar with logos
 try:
-    col_logo1, col_text, col_logo2 = st.columns([1, 10, 1])
+    col_logo1, col_text, col_logo2 = st.columns([1, 20, 1])
     
     with col_logo1:
         # Try to load ESA logo
