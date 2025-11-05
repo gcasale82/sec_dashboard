@@ -305,8 +305,6 @@ with st.sidebar:
         # Add assistant response to chat history (after streaming is complete)
         st.session_state.messages.append({"role": "assistant", "content": response})
         
-        # Rerun the app to update the chat container with the latest state
-        st.experimental_rerun()
 
 # --- Apply Filters to Data ---
 filtered_df = df
