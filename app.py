@@ -145,8 +145,7 @@ df = load_data()
 
 
 # --- Header Section ---
-st.markdown("<h1 class='title'>                                       🚀 🌙<br/>
- ☀️          🌑             🌕            🌎          🔴          🌕           🪐           🔵           🔵<br/>🛡️EO Mission - Security & Compliance Demo Dashboard</h1>", unsafe_allow_html=True)
+st.markdown("🌎EO Missions -🛡️ Security & Compliance Demo Dashboard</h1>", unsafe_allow_html=True)
 st.markdown("""
 <div class='info-box'>
     <p>This dashboard provides a high-level overview of security and compliance status across all missions (FLEX, BIOMASS, EARTHCARE).
