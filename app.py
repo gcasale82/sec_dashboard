@@ -183,7 +183,7 @@ except Exception as e:
         </span>
     </div>
     """, unsafe_allow_html=True)
-st.markdown("<h1 class='title'>🌍 ESA EO Missions - 🛡️ Security & Compliance Dashboard</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='title'>🌍 ESA EO Missions - 🛡️ Security & Compliance Demo Dashboard</h1>", unsafe_allow_html=True)
 st.markdown("""
 <div class='info-box'>
     <p><strong>Demo Dashboard for ESA Earth Observation Missions</strong></p>
