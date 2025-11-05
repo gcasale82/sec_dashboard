@@ -2,6 +2,23 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from io import StringIO
+import random
+import time
+
+def response_generator():
+    response = random.choice(
+        [
+            "Hello there! How can I assist you today?",
+            "Hi, human! Is there anything I can help you with?",
+            "Do you need help?",
+            "You've forgot to say please..like Terminator in the bar scene 😁",
+            "This is only a demo app , but if you re-code with a valid LLM api-key , I can become smarter 🤖"
+        ]
+    )
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
+
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -249,6 +266,40 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
+    # Use a container to display chat history cleanly in the sidebar
+    chat_container = st.container(height=300, border=True)
+
+    with chat_container:
+        # Display chat messages from history
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                # The chat message content must be markdown for proper rendering
+                st.markdown(message["content"])
+
+
+    # Accept user input (uses st.sidebar.chat_input implicitly within the 'with st.sidebar:' block)
+    # Note: We must use the standard st.chat_input here, but it inherits the sidebar context.
+    if prompt := st.chat_input("What is up?", key="sidebar_chat_input"):
+        
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        
+        # Display user message in the chat container
+        with chat_container:
+             with st.chat_message("user"):
+                st.markdown(prompt)
+
+        # Display assistant response in chat container
+        with chat_container:
+            with st.chat_message("assistant"):
+                # Use st.write_stream to generate and display the streamed response
+                response = st.write_stream(response_generator())
+        
+        # Add assistant response to chat history (after streaming is complete)
+        st.session_state.messages.append({"role": "assistant", "content": response})
+        
+        # Rerun the app to update the chat container with the latest state
+        st.experimental_rerun()
 
 # --- Apply Filters to Data ---
 filtered_df = df
